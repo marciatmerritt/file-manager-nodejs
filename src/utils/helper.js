@@ -1,11 +1,18 @@
 import { createInterface } from 'readline';
-import { exit, stdin as input, stdout as output } from 'process';
+import { cwd, exit, stdin as input, stdout as output } from 'process';
 import { MESSAGE_GREETING, MESSAGE_EXIT, MESSAGE_CURRENT_DIR, MESSAGE_TYPE_INFO, MESSAGE_TYPE_ERROR, UNEXPECTED_ERROR_MSG } from "../constants/constants.js";
 import { logger } from './logger.js';
 
 export const getGreetingMessage = (username) => `${MESSAGE_GREETING}${username}!`;
 export const getExitMessage = (username) => `${MESSAGE_EXIT}${username}, goodbye!`;
 export const getCurrentDirMessage = (currentDirectory) => `${MESSAGE_CURRENT_DIR}${currentDirectory}`;
+
+/**
+ * Logs the current working directory using the styled logger.
+ */
+export const printWorkingDirectory = () => {
+    logger(getCurrentDirMessage(cwd()), MESSAGE_TYPE_INFO);
+};
 
 export const readlineInterface = createInterface({
     input,
