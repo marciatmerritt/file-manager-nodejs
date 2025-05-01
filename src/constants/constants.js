@@ -15,3 +15,6 @@ export const INVALID_INPUT_MSG = 'Invalid input. Please check your command and t
 export const OPERATION_FAILED_MSG = 'Operation failed. Please check your command and try again.';
 export const USERNAME_NOT_PROVIDED_MSG = 'Username not provided. Use --username=<your_username>.';
 export const INVALID_USERNAME_FORMAT_MSG = 'Invalid username format. Use --username=<your_username>.';
+
+// Signals
+export const SIGNAL_CTRL_C = 'SIGINT';
