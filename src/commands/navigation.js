@@ -10,14 +10,14 @@ import { printWorkingDirectory } from '../utils/helper.js';
  */
 export const handleUpCommand = async () => {
     const currentDir = cwd();
-    const parentDir = dirname(currentDir);
     const rootDir = parse(currentDir).root;
+    const targetDir = dirname(currentDir);
   
-    if (currentDir === rootDir || parentDir === currentDir) {
+    if (currentDir === rootDir) {
       logger(MESSAGE_NO_PREVIOUS_DIR, MESSAGE_TYPE_INFO);
       return;
     };
 
-    chdir(parentDir);
+    chdir(targetDir);
     printWorkingDirectory();
   };
