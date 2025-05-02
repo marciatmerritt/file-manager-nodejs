@@ -1,5 +1,5 @@
 import { argv } from "node:process";
-import { INVALID_USERNAME_FORMAT_MSG, USERNAME_NOT_PROVIDED_MSG } from "../constants/constants.js";
+import { INVALID_USERNAME_FORMAT_MSG, USERNAME_NOT_PROVIDED_MSG } from "../constants/errorConstants.js";
 
 /**
  * Extracts and validates the username from CLI arguments.
