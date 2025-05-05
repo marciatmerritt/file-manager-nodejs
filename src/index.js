@@ -2,7 +2,9 @@ import { chdir, stdout } from 'node:process';
 import { homedir } from 'node:os';
 import { getUsername } from './utils/getUsername.js';
 import { logger } from './utils/logger.js';
-import { MESSAGE_TYPE_INFO, SIGNAL_CTRL_C } from './constants/constants.js';
+import { MESSAGE_TYPE_INFO, MESSAGE_TYPE_PROMPT } from './constants/messageTypes.js';
+import { MESSAGE_EMPTY_INPUT } from './constants/messages.js';
+import { SIGNAL_CTRL_C } from './constants/constants.js';
 import { getGreetingMessage, handleExit, readlineInterface, printWorkingDirectory } from './utils/helper.js';
 import { handleError, handleFatalError } from './utils/errorHandlers.js';
 import commandHandler from './commands/commandHandler.js';
@@ -25,11 +27,22 @@ const fileManager = () => {
         try {
             const command = input.trim();
         
+            if (!command) {
+                logger(MESSAGE_EMPTY_INPUT, MESSAGE_TYPE_PROMPT);
+                readlineInterface.prompt();
+                return;
+            }
             if (command === '.exit') {
                 handleExit(username);
             };
 
-            await commandHandler(command);
+            const result = await commandHandler(command);
+            if (result?.cmd === 'ls' && Array.isArray(result.data)) {
+                console.table(result.data, ['Name', 'Type']);
+            } else if (result) {
+                logger(result.data, MESSAGE_TYPE_PROMPT);
+            }
+            printWorkingDirectory();
             
         } catch (error) {
             handleError(error);

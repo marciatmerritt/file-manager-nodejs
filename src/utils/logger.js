@@ -27,7 +27,7 @@ export const logger = (message, type = 'info') => {
     const formatters = {
         error: { color: '\x1b[31m', emoji: '❌', label: 'ERROR:' },
         warn: { color: '\x1b[33m', emoji: '⚠️', label: 'WARNING:' },
-        prompt: { color: '\x1b[33m', emoji: '', label: '' },
+        prompt: { color: '\x1b[33m', emoji: '👉', label: '' },
         success: { color: '\x1b[32m', emoji: '✅', label: 'SUCCESS:' },
         info: { color: '\x1b[0m', emoji: '', label: '' },
     };
@@ -35,11 +35,11 @@ export const logger = (message, type = 'info') => {
     const { color, emoji, label } = formatters[type] || formatters.info;
     const prefix = [emoji, label].filter(Boolean).join(' ');
 
-    const formattedMessage = `${color}${prefix} ${reset}${message}`;
+    const formattedMessage = `${color}${prefix}${reset} ${message}`;
 
     if (type === 'error' || type === 'warn' || type === 'prompt') {
         stderr.write(formattedMessage + '\n');
     } else {
         stdout.write(formattedMessage + '\n');
     }
-  };
+};

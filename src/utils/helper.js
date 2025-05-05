@@ -1,7 +1,7 @@
 import { createInterface } from 'readline';
 import { cwd, exit, stdin as input, stdout as output } from 'process';
 import { MESSAGE_GREETING, MESSAGE_EXIT, MESSAGE_CURRENT_DIR } from '../constants/messages.js';
-import { MESSAGE_TYPE_INFO } from '../constants/constants.js';
+import { MESSAGE_TYPE_INFO } from '../constants/messageTypes.js';
 import { logger } from './logger.js';
 
 export const getGreetingMessage = (username) => `${MESSAGE_GREETING}${username}!`;
