@@ -34,3 +34,13 @@ export const handleExit = (username) => {
     readlineInterface.close();
     exit(0);
 };
+
+/**
+ * Converts a speed in MHz to GHz by dividing the value by 1000.
+ *
+ * @param {number} speedMHz - The speed in MHz to convert to GHz.
+ * @returns {number} The equivalent speed in GHz.
+ */
+export const convertMHzToGHz = (speedMHz) => {
+    return speedMHz / 1000;
+};

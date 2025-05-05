@@ -17,7 +17,9 @@ export const up = async (args) => {
     const targetDir = dirname(currentDir);
   
     if (currentDir === rootDir) {
-      return {cmd: 'up', data: MESSAGE_NO_PREVIOUS_DIR};
+      return {
+        type: 'prompt',
+        data: MESSAGE_NO_PREVIOUS_DIR};
     };
 
     chdir(targetDir);

@@ -19,7 +19,10 @@ export const cd = async (args) => {
     const currentDir = cwd();
 
     if (target === currentDir) {
-        return {cmd: 'cd', data: MESSAGE_SAME_DIR};
+        return {
+            type: 'prompt',
+            data: MESSAGE_SAME_DIR
+        };
     }
 
     try {

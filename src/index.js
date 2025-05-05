@@ -8,6 +8,7 @@ import { SIGNAL_CTRL_C } from './constants/constants.js';
 import { getGreetingMessage, handleExit, readlineInterface, printWorkingDirectory } from './utils/helper.js';
 import { handleError, handleFatalError } from './utils/errorHandlers.js';
 import commandHandler from './commands/commandHandler.js';
+import { displayResults } from './utils/displayResults.js';
 
 
 const fileManager = () => {
@@ -37,12 +38,7 @@ const fileManager = () => {
             };
 
             const result = await commandHandler(command);
-            if (result?.cmd === 'ls' && Array.isArray(result.data)) {
-                console.table(result.data, ['Name', 'Type']);
-            } else if (result) {
-                logger(result.data, MESSAGE_TYPE_PROMPT);
-            }
-            printWorkingDirectory();
+            displayResults(result);
             
         } catch (error) {
             handleError(error);

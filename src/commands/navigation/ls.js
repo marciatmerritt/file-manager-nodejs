@@ -28,7 +28,10 @@ export const ls = async (args) => {
         return a.Name.localeCompare(b.Name);
       });
 
-      return {cmd: 'ls', data: result};
+      return {
+        type: 'table',
+        data: result,
+        columns: ['Name', 'Type']};
     } catch (error) {
         throw new Error(getOperationFailedMessage(error.message));
     }
