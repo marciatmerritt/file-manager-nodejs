@@ -15,3 +15,19 @@ export const validateSingleArgument = (command, args) => {
         throw new Error(getInvalidArgumentsErrorMessage(command, 'accepts only one file name'));
     }
 }
+
+/**
+ * Validates that the args array has exactly two arguments.
+ *
+ * @param {string[]} args - The command-line arguments.
+ * @param {string} commandName - The name of the CLI command (e.g., "cp").
+ * @throws {Error} If no arguments, one argument, or more than two arguments is provided.
+ */
+export const validateTwoArguments = (command, args) => {
+    if (args.length === 0 || args.length === 1) {
+        throw new Error(getInvalidArgumentsErrorMessage(command, 'requires two file names'));
+    }
+    if (args.length > 2) {
+        throw new Error(getInvalidArgumentsErrorMessage(command, 'accepts only tw0 file names'));
+    }
+}

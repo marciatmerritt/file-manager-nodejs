@@ -27,3 +27,4 @@ export const INVALID_ARGS_OS_MSG = 'The "os" command requires One valid argument
 export const INVALID_ARGS_OS_FORMAT_MSG = 'Invalid argument format. Arguments should start with "--".';
 export const INVALID_DIR_MSG = 'Invalid directory. Please check the path and try again.';
 export const FILE_AlREADY_EXISTS_MSG = 'File already exists';
+export const FILE_NOT_FOUND_MSG = 'File not found';
