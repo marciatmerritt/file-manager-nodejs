@@ -8,6 +8,7 @@ import { ERROR_UNKNOWN_COMMAND, INVALID_INPUT_MSG, OPERATION_FAILED_MSG, UNEXPEC
 export const getInvalidCommandMessage = (command) => `${INVALID_INPUT_MSG} ${ERROR_UNKNOWN_COMMAND}: ${command}. ${MESSAGE_CHECK_COMMAND}`;
 export const getInvalidInputMessage = (input) => `${INVALID_INPUT_MSG} ${input} ${MESSAGE_CHECK_COMMAND}`;
 export const getOperationFailedMessage = (error) => `${OPERATION_FAILED_MSG} ${error}`;
+export const getInvalidArgumentsErrorMessage = (command, reason) => `${INVALID_INPUT_MSG}, "${command}" ${reason}. ${MESSAGE_CHECK_COMMAND}`;
 
 export const logErrorMessage = (error) => {
     const message = error instanceof Error ? error.message : UNEXPECTED_ERROR_MSG;

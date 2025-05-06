@@ -39,6 +39,7 @@ const fileManager = () => {
 
             const result = await commandHandler(command);
             displayResults(result);
+            printWorkingDirectory();
             
         } catch (error) {
             handleError(error);
